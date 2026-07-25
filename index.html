@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#321f4a">
+  <title>手を撮るだけ占い｜ルナスイ</title>
+  <meta name="description" content="手のひら写真をきっかけに、今のあなたらしさをやさしく言葉にするルナスイの無料体験。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app-shell">
+  <header class="hero">
+    <img src="assets/lunasui.jpg" alt="ルナスイ" class="mascot">
+    <p class="brand">LUNASUI</p>
+    <h1>手を撮るだけ占い</h1>
+    <p class="lead">手のひらの写真をきっかけに、<br>今のあなたらしさを、やさしく言葉にします。</p>
+    <div class="badges"><span>無料</span><span>登録不要</span><span>写真は端末内だけ</span></div>
+  </header>
+
+  <section class="card" id="uploadCard">
+    <p class="eyebrow">まず、手のひらを見せてください</p>
+    <h2>明るい場所で、手をまっすぐに</h2>
+    <div class="tips"><span>手のひらを正面</span><span>指先〜手首まで</span><span>影を少なく</span></div>
+    <label class="upload-box" for="palmImage">
+      <input id="palmImage" type="file" accept="image/*" capture="environment">
+      <div id="uploadPrompt"><div class="camera-icon">📷</div><strong>写真を撮る・選ぶ</strong><small>JPG・PNG</small></div>
+      <img id="preview" alt="選んだ手のひら写真" hidden>
+    </label>
+    <label class="consent"><input id="agree" type="checkbox"><span>写真をこの鑑定体験に使用することに同意します</span></label>
+    <button id="startBtn" class="primary" disabled>ルナスイに見てもらう</button>
+    <button id="demoBtn" class="secondary compact" type="button">写真なしで体験を見る</button>
+    <p class="privacy">写真は外部へ送信・保存されません。現在の公開版は、写真を入口に16タイプの言葉を届ける体験版です。</p>
+  </section>
+
+  <section class="card hidden loading-card" id="loadingCard" aria-live="polite">
+    <img src="assets/moon_stars.jpg" alt="" class="loading-art">
+    <p class="eyebrow">静かにお待ちください</p>
+    <h2>ルナスイが<br>あなたの手を見つめています…</h2>
+    <p id="loadingText">手のひら全体を見つめています…</p>
+    <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+    <ul class="reading-steps" id="readingSteps">
+      <li data-step="0">手のひら全体</li><li data-step="1">生命線</li><li data-step="2">知能線</li><li data-step="3">感情線</li><li data-step="4">あなたらしさ</li>
+    </ul>
+  </section>
+
+  <section class="card hidden result-card" id="resultCard">
+    <img src="assets/drop_ripples.jpg" alt="" class="chapter-art">
+    <p class="eyebrow">ルナスイから、今のあなたへ</p>
+    <p class="result-label">あなたの手相タイプ</p>
+    <h2 id="typeTitle"></h2>
+    <p id="typeSummary" class="type-summary"></p>
+    <div class="traits" id="traits"></div>
+
+    <div class="lunasui-message intro-message">
+      <img src="assets/lunasui.jpg" alt="ルナスイ">
+      <div><p class="message-title">ルナスイより</p><p id="lunasuiText"></p><p>それでは、気になるところから一緒に見ていきましょう。</p></div>
+    </div>
+
+    <div class="topic-buttons" role="tablist" aria-label="鑑定テーマ">
+      <button class="topic-btn active" data-topic="love" role="tab">恋愛</button>
+      <button class="topic-btn" data-topic="work" role="tab">仕事</button>
+      <button class="topic-btn" data-topic="money" role="tab">お金</button>
+      <button class="topic-btn" data-topic="strength" role="tab">強み</button>
+    </div>
+    <article class="topic-panel" id="topicPanel">
+      <img id="topicArt" src="assets/moon_cloud.jpg" alt="" class="topic-art">
+      <h3 id="topicTitle"></h3>
+      <p id="topicText"></p>
+      <div class="question-box"><span>夫婦未来会議への問い</span><p id="topicQuestion"></p></div>
+    </article>
+
+    <section class="bridge">
+      <img src="assets/tea_night.jpg" alt="湯気の立つお茶" class="bridge-art">
+      <p class="bridge-kicker">次は、二人で見てみませんか？</p>
+      <h3>違いが見えると、会話は少しやさしくなる</h3>
+      <p>自分の手相だけでは見えなかったことも、二人の違いを並べると「だから伝わり方が違ったんだ」と気づけることがあります。</p>
+      <a id="noteLink" class="note-btn" href="#" aria-disabled="true">手相×夫婦未来会議を見る</a>
+      <small>公開時にnoteのURLを設定してください</small>
+    </section>
+
+    <section class="ending">
+      <img src="assets/sparkle_wave.jpg" alt="" class="ending-art">
+      <h3>ありがとうございました。</h3>
+      <p>今回の診断は、<strong>今のあなた</strong>を映した一枚です。</p>
+      <p>手相は、毎日のように大きく変わるものではありません。</p>
+      <p>新しい環境に挑戦したとき、人生の節目を迎えたとき、あるいは<strong>半年ほど経った頃</strong>に、もう一度手を見せてください。</p>
+      <p>その頃には、今とは少し違う「あなたらしさ」が表れているかもしれません。</p>
+      <p>この診断が、あなた自身や大切な人との会話のきっかけになれば嬉しいです。</p>
+      <p class="closing">また必要なときに、お待ちしています。</p>
+      <div class="finished">診断終了</div>
+    </section>
+
+    <button id="retryBtn" class="secondary">📷 もう一度手相を撮る</button>
+  </section>
+</main>
+<footer><p>© LUNASUI｜手を撮るだけ占い Release 1.0</p><p>自己理解と会話のきっかけを目的とした娯楽コンテンツです。重要な判断の根拠には使用しないでください。</p></footer>
+<script src="script.js"></script>
+</body></html>
